@@ -70,6 +70,10 @@ TEMPLATES = [
     },
 ]
 
+# override djanog's default user authentication,
+# and use the model we just built
+AUTH_USER_MODEL = 'account.Account'
+
 WSGI_APPLICATION = 'demo_app.wsgi.application'
 
 
