@@ -4,7 +4,14 @@
 
     <head>
         <title>The head.</title>
-        <h1>this is head</h1>
+
+
+        {%  if request.user.is_authenticated %}
+            <p>Hello, {{ request.user.username }}</p> | <a href="{% url 'logout' %}">logout</a>
+        {% else %}
+            <p><a href="{% url 'register' %}">Register</a> | <a href="">login</a></p>
+        {% endif %}
+    
     </head>
 
 
