@@ -2,11 +2,19 @@
 
 
 {% block content %}
-
+<a href="{% url 'register' %}">register</a>
     <div style="border: 2px solid black;">
-        <h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati libero eaque quis dolore ad voluptas iure. Velit deleniti error labore nesciunt odit delectus, pariatur consequuntur aliquid debitis et omnis numquam?</p>
-        </h4>
+        <p>
+            <ul>
+                {% for user in users %}
+                <li>
+                    {{ user.username }}
+                </li>
+                {% empty %}
+                    <li>There are no users to display.</li>
+                {% endfor %}
+            </ul>
+        </p>
     </div>
    
 
