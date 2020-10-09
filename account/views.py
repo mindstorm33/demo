@@ -75,7 +75,10 @@ def account_view(request):
     if not request.user.is_authenticated:
         return redirect("home")
 
+    context={}
+
     if request.method != 'POST':
+        # is a GET request
         form = AccountUpdateForm(
             initial={
                 "email": request.user.email,
@@ -86,9 +89,14 @@ def account_view(request):
         # is POST request; process data
         form = AccountUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
+            form.initial={
+                "email": request.POST['email'],
+                "username": request.POST['username'],
+            }
             form.save()
-            return redirect("home")
-    context = {'form': form }
+            context['success_message'] = "Updated!"
+            
+    context['form'] = form
     return render(request, 'account/account.html', context)
     
 
