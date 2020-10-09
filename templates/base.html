@@ -3,35 +3,39 @@
 
 
     <head>
-        <title>The head.</title>
+        <title>The head</title>
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
-        {%  if request.user.is_authenticated %}
-            <p>
-                <a href="{% url 'home' %}">Home</a> |
-                <a href="{% url 'logout' %}">logout</a> |
-                    Hello, {{ request.user.username }}
-            </p> 
-        {% else %}
-            <p>
-                <a href="{% url 'home' %}">Home</a> |
-                <a href="{% url 'register' %}">Register</a> |
-                <a href="{% url 'login' %}">login</a>
-            </p>
-        {% endif %}
+  
+     
+        {% include "snippets/header.html"%}
     
     </head>
 
 
     <body>
+
+        <!-- body -->
+        <style type="text/css">
+            .main{
+                min-height: 100vh;
+                height: 100%;
+            }
+
+        </style>
        
-        {% block content %}
+       <div class="main">
+            {% block content %}
+            
+            {% endblock content %}
+       </div>
+            <!-- end body -->
         
-        {% endblock content %}
+
+        {% include "snippets/footer.html"%}
 
     </body>
 
-    <footer>
-        <h4>this is the footer.</h4>
-    </footer>
 </html>
