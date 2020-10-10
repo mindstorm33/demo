@@ -1,9 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 
 {% block content %}
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <div class="d-flex flex-column pb-3">
+        <img class="img-fluid mx-auto d-block" src="{% static 'witch_logo.png' %}" alt="codingwitchproject logo" width="72" height="72">
+    </div>
+
     <h1 class="display-4">CodingWitchProject</h1>
     <p class="lead">Learn to craft great products using your coding wizardry!</p>
 </div>
