@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # my apps
     'personal',
     'account',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -74,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-# override djanog's default user authentication,
+# override django's default user authentication,
 # and use the model we just built
 AUTH_USER_MODEL = 'account.Account'
 
