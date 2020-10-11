@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
+from django.http import HttpResponse
 from .models import BlogPost
 from account.models import Account
 from .forms import CreateBlogPostForm, UpdateBlogPostForm
-from django.db.models import Q
+
 # Create your views here.
 
 def create_blog_view(request):
@@ -45,6 +47,9 @@ def edit_blog_view(request, slug):
         return render('must_authenticate')
 
     blog_post = get_object_or_404(BlogPost, slug=slug)
+    if blog_post.author != user:
+        return HttpResponse("Only the author of the post can edit it.")
+        
     if request.POST:
         form = UpdateBlogPostForm(request.POST or None, request.FILES or None, instance=blog_post)
         if form.is_valid():
