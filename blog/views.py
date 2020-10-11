@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import BlogPost
 from account.models import Account
 from .forms import CreateBlogPostForm
@@ -24,4 +24,14 @@ def create_blog_view(request):
         context['form'] = form
 
     return render(request, 'blog/create_blog.html', context)
+
+
+def detail_blog_view(request, slug):
+    """ render the page to display the datailed blog post. """
+
+    context = {}
+    blog_post = get_object_or_404(BlogPost, slug=slug)
+    context['blog_post'] = blog_post
+
+    return render(request, 'blog/detail_blog.html', context)
     

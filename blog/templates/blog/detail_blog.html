@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<style type="text/css">
+    .card {
+        max-width: 700px;
+    }
+    .container{
+        padding: 20px;
+    }
+        
+</style>
+
+<div class="container">
+    <div class="row">
+
+        <!-- blog post  -->
+        <div class="card m-atuo">
+            <img src="{{blog_post.image.url}}" alt="" class="card-img-top">
+            <div class="card-body my-2">
+                <h2 class="card-title">{{ blog_post.title}}</h2>
+                <p class="card-text">{{blog_post.body|safe}}</p>
+            </div>
+            <div class="card-footer text-muted">
+                Udpdated on {{ blog_post.date_updated}} by {{ blog_post.author.username }}
+            </div>
+        </div>
+        <!-- end blog post  -->
+
+    </div>
+</div>
+
+
+{% endblock content %}
